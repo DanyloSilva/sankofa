@@ -38,15 +38,17 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   const { name, email, battleName, message } = validatedFields.data;
 
-  // In a real application, you would use a service like Nodemailer, Resend, or SendGrid here.
-  // For this example, we'll just log the data to the console.
-  console.log('--- Nova Submissão do Formulário de Contato ---');
+  // ATENÇÃO: A funcionalidade de envio de e-mail ainda não está implementada.
+  // Os dados do formulário serão apenas registrados no console do servidor para fins de teste.
+  // Para enviar e-mails de verdade, você precisará integrar um serviço como Resend, Nodemailer ou SendGrid.
+  console.log('--- SIMULAÇÃO DE ENVIO DE E-MAIL ---');
+  console.log('Uma submissão de formulário foi recebida:');
   console.log('Nome:', name);
   console.log('Email:', email);
   console.log('Nome da Batalha:', battleName);
   console.log('Mensagem:', message);
-  console.log('------------------------------------------------');
-  console.log('Email seria enviado para: sankofaraphub@gmail.com');
+  console.log('-------------------------------------');
+  console.log('O e-mail seria enviado para: sankofaraphub@gmail.com');
 
 
   return {
