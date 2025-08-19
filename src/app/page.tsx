@@ -1,5 +1,7 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { ArrowRight, Menu, Mic, Star, Twitter, Instagram, Youtube, UserCheck, ShieldCheck, BarChart, Tv } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -23,6 +25,13 @@ const navLinks = [
 ];
 
 export default function LandingPage() {
+  const [copied, setCopied] = useState(false);
+  const pixKey = "sankofaraphub@gmail.com";
+  const handleCopyPix = () => {
+    navigator.clipboard.writeText(pixKey);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
     <div className="flex min-h-[100dvh] flex-col bg-gradient-to-b from-background to-secondary text-foreground">
       <header className="sticky top-0 z-50 w-full bg-background/80 px-4 py-3 backdrop-blur-md md:px-6">
@@ -111,7 +120,7 @@ export default function LandingPage() {
             </div>
             <div className="relative h-[500px] w-full flex items-center justify-center">
               <Image
-                src="/logos/sankofa-rap-hub-logo.png"
+                  src="/logos/Logo do SANKOFA RAP HUB.png"
                 alt="Logo SankofaRapHub"
                 width={500}
                 height={500}
@@ -197,19 +206,19 @@ export default function LandingPage() {
               <p className="mt-4 text-foreground/80 text-lg">Eventos que confiam e crescem com o SankofaRapHub.</p>
             </div>
             <div className="grid gap-8 md:grid-cols-2">
-              <Card className="bg-card border-border overflow-hidden group">
+              <Card className="bg-card border-border overflow-hidden group transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
                 <CardContent className="p-0">
                   <Image
-                    src="/logos/batalha-da-varzea.png"
+                    src="/logos/ChatGPT Image 5 de mai. de 2025, 21_49_07.png"
                     alt="Batalha na Várzea"
                     width={600}
                     height={400}
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="p-6">
                     <h3 className="font-headline text-2xl tracking-wider">Batalha na Várzea</h3>
                     <p className="text-foreground/70 mt-2">Uma das batalhas mais tradicionais, agora com gestão digital e ranking oficial.</p>
-                     <Button asChild className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
+                     <Button asChild className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold transition-transform duration-200 hover:scale-105 hover:shadow-lg">
                         <a href="https://www.batalha-na-varzea.com/" target="_blank" rel="noopener noreferrer">
                           Ver Página da Batalha <ArrowRight className="ml-2 h-4 w-4" />
                         </a>
@@ -217,20 +226,19 @@ export default function LandingPage() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="bg-card border-border overflow-hidden group">
+              <Card className="bg-card border-border overflow-hidden group transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
                 <CardContent className="p-0">
                    <Image
-                    src="https://placehold.co/600x400.png"
+                    src="/logos/471533607_901912488376457_7516849924128346808_n.jpg"
                     alt="Liga do Trombone"
                     width={600}
                     height={400}
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint="microphone stage light"
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="p-6">
                     <h3 className="font-headline text-2xl tracking-wider">Liga do Trombone</h3>
                     <p className="text-foreground/70 mt-2">A nova liga que promete agitar a cena, em breve no nosso hub.</p>
-                    <Button disabled className="w-full mt-6 font-bold">Em Breve</Button>
+                    <Button disabled className="w-full mt-6 font-bold transition-transform duration-200 hover:scale-105 hover:shadow-lg">Em Breve</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -244,7 +252,7 @@ export default function LandingPage() {
               <h2 className="font-headline text-4xl font-bold tracking-wider sm:text-5xl md:text-6xl">
                 Junte-se à revolução das batalhas de rap.
               </h2>
-               <p className="mx-auto mt-4 max-w-[600px] text-lg text-primary-foreground/80">
+              <p className="mx-auto mt-4 max-w-[600px] text-lg text-primary-foreground/80">
                 Faça parte da comunidade que está construindo o futuro da cena.
               </p>
               <div className="mt-8">
@@ -253,6 +261,28 @@ export default function LandingPage() {
                     Cadastrar Minha Batalha
                   </Link>
                 </Button>
+              </div>
+              {/* Seção de doações PIX */}
+              <div className="mt-16 flex flex-col items-center justify-center gap-4">
+                <h3 className="font-headline text-2xl font-bold text-primary-foreground">Apoie o SankofaRapHub</h3>
+                <p className="text-primary-foreground/80">Contribua com qualquer valor via PIX para ajudar a manter o projeto!</p>
+                <div className="bg-background rounded-xl p-6 flex flex-col items-center gap-2 shadow-lg">
+                  <Image
+                    src="/WhatsApp Image 2025-08-19 at 17.21.49.jpeg"
+                    alt="QR Code para doação via PIX SankofaRapHub"
+                    width={300}
+                    height={300}
+                    className="mb-2 object-contain max-w-full h-auto rounded-lg shadow transition-transform duration-300 hover:scale-105"
+                  />
+                  <span className="font-mono text-lg text-primary">Chave PIX: <br /> {pixKey}</span>
+                  <button
+                    type="button"
+                    onClick={handleCopyPix}
+                    className="mt-2 px-4 py-2 rounded bg-primary text-primary-foreground font-semibold shadow hover:bg-primary/90 transition-all duration-200"
+                  >
+                    {copied ? "Copiado!" : "Copiar chave PIX"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -279,7 +309,7 @@ export default function LandingPage() {
           <p className="text-sm text-foreground/70">&copy; {new Date().getFullYear()} SankofaRapHub. Todos os direitos reservados.</p>
           <div className="flex gap-4">
             <Link href="#" className="text-foreground/70 transition-colors hover:text-primary"><Twitter className="h-6 w-6" /></Link>
-            <Link href="#" className="text-foreground/70 transition-colors hover:text-primary"><Instagram className="h-6 w-6" /></Link>
+            <Link href="https://www.instagram.com/sankofaraphub/" target="_blank" rel="noopener noreferrer" className="text-foreground/70 transition-colors hover:text-primary"><Instagram className="h-6 w-6" /></Link>
             <Link href="#" className="text-foreground/70 transition-colors hover:text-primary"><Youtube className="h-6 w-6" /></Link>
           </div>
         </div>
