@@ -69,36 +69,25 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
-        <section id="home" className="relative h-[90vh] min-h-[700px] w-full">
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
-          <Image
-            src="https://placehold.co/1920x1080.png"
-            alt="Batalha de Rap em um palco com luzes neon"
-            layout="fill"
-            objectFit="cover"
-            className="absolute inset-0 z-0 opacity-30"
-            data-ai-hint="rap battle neon lights"
-          />
-          <div className="relative z-20 flex h-full flex-col items-center justify-center text-center">
-            <div className="container px-4 md:px-6">
-              <h1 className="font-headline text-5xl font-bold tracking-wider uppercase text-primary sm:text-7xl md:text-8xl">
-                O Futuro das Batalhas de Rap
-              </h1>
-              <p className="mx-auto mt-6 max-w-[800px] text-lg text-foreground/80 md:text-xl">
-                Eleve sua batalha de MCs a um novo patamar com a plataforma definitiva para gestão de eventos, ranking de artistas e visibilidade na cena.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 py-6">
-                  <Link href="#contato">
-                    Quero Cadastrar
-                  </Link>
-                </Button>
-                 <Button asChild size="lg" variant="outline" className="font-bold text-lg px-8 py-6">
-                  <Link href="#como-funciona">
-                    Saber Mais <ArrowRight className="ml-2" />
-                  </Link>
-                </Button>
-              </div>
+        <section id="home" className="relative flex items-center justify-center text-center h-[90vh] min-h-[700px] w-full">
+          <div className="container px-4 md:px-6">
+            <h1 className="font-headline text-5xl font-bold tracking-wider uppercase text-primary sm:text-7xl md:text-8xl">
+              O Futuro das Batalhas de Rap
+            </h1>
+            <p className="mx-auto mt-6 max-w-[800px] text-lg text-foreground/80 md:text-xl">
+              Eleve sua batalha de MCs a um novo patamar com a plataforma definitiva para gestão de eventos, ranking de artistas e visibilidade na cena.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg px-8 py-6">
+                <Link href="#contato">
+                  Quero Cadastrar
+                </Link>
+              </Button>
+               <Button asChild size="lg" variant="outline" className="font-bold text-lg px-8 py-6">
+                <Link href="#como-funciona">
+                  Saber Mais <ArrowRight className="ml-2" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
