@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { ArrowRight, Menu, Mic, Star, Twitter, Instagram, Youtube, UserCheck, ShieldCheck, BarChart, Tv } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { ContactForm } from '@/components/contact-form';
 
 const Logo = () => (
@@ -48,6 +48,9 @@ export default function LandingPage() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-background/90 border-l-border">
+              <SheetHeader className="hidden">
+                <SheetTitle>Menu de Navegação</SheetTitle>
+              </SheetHeader>
               <div className="flex flex-col gap-8 p-6">
                 <Logo />
                 <nav className="flex flex-col gap-4">
