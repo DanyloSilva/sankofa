@@ -24,7 +24,7 @@ const navLinks = [
 
 export default function LandingPage() {
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
+    <div className="flex min-h-[100dvh] flex-col bg-gradient-to-b from-background to-secondary text-foreground">
       <header className="sticky top-0 z-50 w-full bg-background/80 px-4 py-3 backdrop-blur-md md:px-6">
         <div className="container mx-auto flex items-center justify-between">
           <Logo />
@@ -92,7 +92,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="sobre" className="bg-background py-20">
+        <section id="sobre" className="bg-transparent py-20">
           <div className="container mx-auto grid items-center gap-12 px-4 md:grid-cols-2 md:px-6">
             <div className="space-y-6">
               <div className="inline-block rounded-md bg-primary/10 px-4 py-2 text-sm font-bold uppercase tracking-wider text-primary">Sobre a Plataforma</div>
@@ -119,7 +119,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="como-funciona" className="bg-secondary">
+        <section id="como-funciona" className="bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto mb-16 max-w-3xl text-center">
               <h2 className="font-headline text-4xl font-bold tracking-wider text-foreground sm:text-5xl">Leve sua Batalha para o Próximo Nível</h2>
@@ -142,7 +142,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="beneficios" className="bg-background">
+        <section id="beneficios" className="bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
              <div className="mx-auto mb-16 max-w-3xl text-center">
               <h2 className="font-headline text-4xl font-bold tracking-wider text-foreground sm:text-5xl">Vantagens para Todos</h2>
@@ -187,7 +187,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="cases" className="bg-secondary">
+        <section id="cases" className="bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2 className="font-headline text-4xl font-bold tracking-wider text-foreground sm:text-5xl">Batalhas em Destaque</h2>
@@ -255,7 +255,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="contato" className="bg-background">
+        <section id="contato" className="bg-transparent">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto mb-12 max-w-2xl text-center">
               <h2 className="font-headline text-4xl font-bold tracking-wider text-primary sm:text-5xl">Fale com a gente</h2>
