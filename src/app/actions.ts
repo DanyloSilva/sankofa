@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres.' }),
@@ -38,21 +39,45 @@ export async function submitContactForm(prevState: FormState, formData: FormData
 
   const { name, email, battleName, message } = validatedFields.data;
 
-  // ATENÇÃO: A funcionalidade de envio de e-mail ainda não está implementada.
-  // Os dados do formulário serão apenas registrados no console do servidor para fins de teste.
-  // Para enviar e-mails de verdade, você precisará integrar um serviço como Resend, Nodemailer ou SendGrid.
-  console.log('--- SIMULAÇÃO DE ENVIO DE E-MAIL ---');
-  console.log('Uma submissão de formulário foi recebida:');
-  console.log('Nome:', name);
-  console.log('Email:', email);
-  console.log('Nome da Batalha:', battleName);
-  console.log('Mensagem:', message);
-  console.log('-------------------------------------');
-  console.log('O e-mail seria enviado para: sankofaraphub@gmail.com');
+  // --- CONFIGURAÇÃO DO NODEMAILER ---
+  // Substitua os valores abaixo pelas suas credenciais SMTP.
+  // É ALTAMENTE RECOMENDÁVEL usar variáveis de ambiente para guardar essas informações.
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || 'smtp.example.com', // Ex: smtp.gmail.com
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: process.env.SMTP_USER || 'seu-email@example.com', // Seu usuário SMTP
+      pass: process.env.SMTP_PASS || 'sua-senha-smtp', // Sua senha SMTP
+    },
+  });
 
+  try {
+    await transporter.sendMail({
+      from: `"${name}" <${email}>`, // Remetente
+      to: 'sankofaraphub@gmail.com', // Destinatário
+      subject: `Nova Mensagem de Contato: ${battleName}`, // Assunto
+      text: message, // Corpo do e-mail em texto puro
+      html: `
+        <h2>Nova Mensagem do SankofaRapHub</h2>
+        <p><strong>Nome:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Nome da Batalha:</strong> ${battleName}</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>${message}</p>
+      `, // Corpo do e-mail em HTML
+    });
 
-  return {
-    message: 'Formulário enviado com sucesso! Entraremos em contato em breve.',
-    success: true,
-  };
+    return {
+      message: 'Formulário enviado com sucesso! Entraremos em contato em breve.',
+      success: true,
+    };
+
+  } catch (error) {
+    console.error('Erro ao enviar e-mail:', error);
+    return {
+      message: 'Ocorreu um erro ao tentar enviar o e-mail. Por favor, tente novamente mais tarde.',
+      success: false,
+    };
+  }
 }
