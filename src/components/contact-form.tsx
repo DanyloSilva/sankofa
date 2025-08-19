@@ -19,14 +19,17 @@ const contactFormSchema = z.object({
   message: z.string().min(10, { message: 'A mensagem deve ter pelo menos 10 caracteres.' }),
 });
 
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
 export function ContactForm() {
   const { toast } = useToast();
   const [state, formAction] = useActionState(submitContactForm, {
     message: '',
     success: false,
+    errors: undefined
   });
 
-  const form = useForm<z.infer<typeof contactFormSchema>>({
+  const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: '',
@@ -34,15 +37,7 @@ export function ContactForm() {
       battleName: '',
       message: '',
     },
-    // Set form errors from server action
-    errors: state.errors ? {
-      name: state.errors.name?.[0],
-      email: state.errors.email?.[0],
-      battleName: state.errors.battleName?.[0],
-      message: state.errors.message?.[0],
-    } : {},
   });
-
 
   useEffect(() => {
     if (state.message) {
@@ -52,10 +47,23 @@ export function ContactForm() {
         variant: state.success ? 'default' : 'destructive',
       });
     }
+
     if (state.success) {
       form.reset();
     }
-  }, [state, toast, form]);
+
+    if (!state.success && state.errors) {
+      Object.entries(state.errors).forEach(([key, value]) => {
+        if (value) {
+          form.setError(key as keyof ContactFormValues, {
+            type: 'manual',
+            message: value[0],
+          });
+        }
+      });
+    }
+  }, [state, form, toast]);
+
 
   return (
     <Form {...form}>
