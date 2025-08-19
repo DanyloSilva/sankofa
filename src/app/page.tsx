@@ -208,12 +208,11 @@ export default function LandingPage() {
               <Card className="bg-card border-border overflow-hidden group">
                 <CardContent className="p-0">
                   <Image
-                    src="https://placehold.co/600x400.png"
+                    src="/logos/batalha-da-varzea.png"
                     alt="Batalha na Várzea"
                     width={600}
                     height={400}
                     className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                    data-ai-hint="street crowd brazil"
                   />
                   <div className="p-6">
                     <h3 className="font-headline text-2xl tracking-wider">Batalha na Várzea</h3>
