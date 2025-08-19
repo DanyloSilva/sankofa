@@ -48,8 +48,8 @@ export default function LandingPage() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-background/90 border-l-border">
-              <SheetHeader className="hidden">
-                <SheetTitle>Menu de Navegação</SheetTitle>
+              <SheetHeader>
+                <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-8 p-6">
                 <Logo />
@@ -109,14 +109,14 @@ export default function LandingPage() {
                 Acreditamos no poder da tecnologia para conectar, organizar e amplificar as vozes da cena do rap nacional.
               </p>
             </div>
-            <div className="relative h-[500px] w-full">
+            <div className="relative h-[500px] w-full flex items-center justify-center">
               <Image
-                src="https://placehold.co/600x500.png"
-                alt="Organizador de evento de rap usando um notebook"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-2xl shadow-2xl shadow-primary/10"
-                data-ai-hint="event organizer laptop"
+                src="/logos/sankofa-rap-hub-logo.png"
+                alt="Logo SankofaRapHub"
+                width={500}
+                height={500}
+                objectFit="contain"
+                className="rounded-2xl"
               />
             </div>
           </div>
