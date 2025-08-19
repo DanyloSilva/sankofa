@@ -219,7 +219,7 @@ export default function LandingPage() {
                     <h3 className="font-headline text-2xl tracking-wider">Batalha na Várzea</h3>
                     <p className="text-foreground/70 mt-2">Uma das batalhas mais tradicionais, agora com gestão digital e ranking oficial.</p>
                      <Button asChild className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.batalha-na-varzea.com/" target="_blank" rel="noopener noreferrer">
                           Ver Página da Batalha <ArrowRight className="ml-2 h-4 w-4" />
                         </a>
                       </Button>
